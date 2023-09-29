@@ -1,13 +1,13 @@
 $(document).ready(function () {
     $('#carrossel-imagens').slick({
         autoplay: true,
-    })
+    });
 
     $('.menu-hamburguer').click(function() {
         $('nav').slideToggle();
-    })
+    });
 
-    $('#telefone').mask('(00) 00000-0000')
+    $('#telefone').mask('(00) 00000-0000');
 
     $('form').validate({
         rules: {
@@ -36,11 +36,22 @@ $(document).ready(function () {
             mensagem: 'Por favor, digite sua mensagem.'
         },
         submitHandler: function(form) {
-            console.log(form)
+            console.log(form);
         },
         invalidHandler: function(evento, validador) {
             let camposIncorretos = validador.numberOfInvalids();
-            console.log(camposIncorretos)
+            console.log(camposIncorretos);
         }
-    })
-})
+    });
+
+    $('.lista-veiculos button').click(function() {
+        const destino = $('#contato');
+        const nomeVeiculo = $(this).parent().find('h3').text();
+
+        $('#veiculo-interesse').val(nomeVeiculo);
+
+        $('html').animate({
+            scrollTop: destino.offset().top
+        }, 1000);
+    });
+});
